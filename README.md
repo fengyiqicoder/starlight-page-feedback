@@ -59,6 +59,9 @@ With the switch off (the default) nothing AI-related is loaded.
 
 ## More for Starlight
 
+- [starlight-reading-time](https://github.com/fengyiqicoder/starlight-reading-time): reading time, last updated and an outdated note under every page title.
+- [starlight-share-highlight](https://github.com/fengyiqicoder/starlight-share-highlight): select text to copy a link that jumps to and highlights it.
+- [starlight-glossary](https://github.com/fengyiqicoder/starlight-glossary): define a term once and readers get its definition in a tooltip wherever it appears, plus a glossary page.
 - [starlight-onetag](https://github.com/fengyiqicoder/starlight-onetag): Ask AI, AI answers in search, page translation for readers, Explain this code, page summaries, ask about a selection.
 
 ## License

@@ -1,0 +1,14 @@
+{
+  "name": "starlight-page-feedback",
+  "version": "0.1.0",
+  "description": "\"Was this page helpful?\" for Starlight docs. Votes go to the analytics you already run (Plausible, Umami, GA, PostHog, Fathom) or your endpoint; a \"No\" can become a prefilled GitHub issue. Free, no account, no backend.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["astro", "starlight", "starlight-plugin", "withastro", "docs", "feedback", "was-this-helpful", "rating", "plausible", "umami", "analytics", "github-issues"],
+  "repository": { "type": "git", "url": "git+https://github.com/fengyiqicoder/starlight-page-feedback.git" },
+  "homepage": "https://github.com/fengyiqicoder/starlight-page-feedback",
+  "exports": { ".": "./index.js", "./client": "./client.js" },
+  "files": ["index.js", "client.js", "plugin.js", "README.md", "LICENSE"],
+  "dependencies": { "starlight-onetag": "^0.4.0" },
+  "peerDependencies": { "@astrojs/starlight": ">=0.32.0", "astro": ">=5.0.0" }
+}

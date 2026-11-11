@@ -1,0 +1,39 @@
+# Publishes to npm with trusted publishing (OIDC). No npm token is stored anywhere.
+# Release: bump "version" in package.json, commit, then push a tag named v<version>.
+# Run it by hand from the Actions tab to rehearse without publishing.
+name: Publish to npm
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Tag must match package.json version
+        if: github.event_name == 'push'
+        run: |
+          want="v$(node -p "require('./package.json').version")"
+          [ "$want" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME does not match package.json ($want)"; exit 1; }
+      - name: Syntax check
+        run: git ls-files '*.js' | xargs -n1 node --check
+      - name: Show what will be published
+        run: npm --version && npm pack --dry-run
+      - name: Publish
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            npm publish --dry-run
+          else
+            npm publish
+          fi
